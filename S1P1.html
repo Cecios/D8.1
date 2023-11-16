@@ -439,10 +439,31 @@ for (let i = 0; i < linkedin.length; i++) {
     } 
 }
         // EXTRA Crea con JavaScript la funzionalità per rimuovere il corrispondente elemento padre dal DOM cliccando sul link "Continua a leggere".
+        let removeFather = function(event) {
 
-        // EXTRA Crea con JavaScript la funzionalità per creare un alert col nome dell'autore ogni volta che il cursore passa sopra l'autore del post.
-        let autori = document.querySelectorAll(".col-md-8 .blog-post-meta a")
 
+
+console.log(event.target.parentNode.parentNode.classList);
+if (event.target.parentNode.classList.contains("col-md-6")) {
+    event.target.parentNode.remove()
+}
+else if(event.target.parentNode.parentNode.classList.contains("col-md-6"))
+{
+        event.target.parentNode.parentNode.remove()
+}
+else if (event.target.parentNode.parentNode.parentNode.classList.contains("col-md-6")) {
+    event.target.parentNode.parentNode.parentNode.remove()
+}
+         // EXTRA Crea con JavaScript la funzionalità per creare un alert col nome dell'autore ogni volta che il cursore passa sopra l'autore del post.
+
+}
+let link = document.querySelectorAll(".p-4")
+for (let i = 0; i < link.length; i++) {
+console.log(link[i].innerText); 
+if (link[i].innerText.toLowerCase().includes("continua a leggere")) {
+link[i].addEventListener("click",removeFather)      
+}
+}
 const alertShow = function(event){
     alert("Nome dell'autore: "+event.target.innerText)
     }    
